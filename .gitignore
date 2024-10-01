@@ -4,5 +4,7 @@ github-copilot
 neofetch
 zsh
 zed
+yarn
+node_modules
 
 .DS_Store
