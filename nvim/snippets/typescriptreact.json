@@ -1,0 +1,22 @@
+{
+  "React Component": {
+    "prefix": "rccf",
+    "body": [
+      "import cn from 'classnames';",
+      "",
+      "import s from './${1:Component}.module.css';",
+      "",
+      "interface ${1:Component}Props {",
+      "  className?: string;",
+      "}",
+      "",
+      "export const ${1:Component} = ({ className }: ${1:Component}Props) => {",
+      "  return (",
+      "    <div className={cn(s.root, className)}>",
+      "    </div>",
+      "  );",
+      "};"
+    ],
+    "description": "React Component Template"
+  }
+}
