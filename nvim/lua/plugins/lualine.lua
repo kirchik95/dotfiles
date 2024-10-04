@@ -1,16 +1,9 @@
 return {
-  -- bufferline
-  {
-    "akinsho/bufferline.nvim",
-    dependencies = "nvim-tree/nvim-web-devicons",
-  },
-
-  --lualine
   {
     "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
     config = function()
       local lualine = require("lualine")
-      -- local navic = require("nvim-navic")
 
       local assets = {
         left_separator = "",
@@ -164,8 +157,7 @@ return {
             },
           },
         },
-        -- extensions = { "quickfix", "nvim-tree", "lazy", "mason" },
-        extensions = { "quickfix", "lazy", "mason" },
+        extensions = { "quickfix", "lazy", "mason", "neo-tree" },
       })
     end,
   },

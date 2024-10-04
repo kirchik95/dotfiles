@@ -1,20 +1,4 @@
 return {
-  -- telescope
-  {
-    "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope-file-browser.nvim",
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-        cond = function()
-          return vim.fn.executable("make") == 1
-        end,
-      },
-    },
-  },
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
@@ -93,66 +77,10 @@ return {
         diagnostics = {
           symbols = { error = " ", warn = " ", hint = " ", info = " " },
         },
-        -- -- Change type
-        -- added = "✚",
-        -- deleted = "✖",
-        -- modified = "",
-        -- renamed = "󰁕",
-        -- -- Status type
-        -- untracked = "",
-        -- ignored = "",
-        -- unstaged = "󰄱",
-        -- staged = "",
-        -- conflict = "",
-        --
       },
     },
     config = function(_, opts)
       require("neo-tree").setup(opts)
     end,
-  },
-
-  -- gitsigns
-  { "lewis6991/gitsigns.nvim" },
-
-  -- vim-illuminate
-  {
-    "RRethy/vim-illuminate",
-    config = function()
-      local illuminate = require("illuminate")
-
-      illuminate.configure({
-        delay = 200,
-        large_file_cutoff = 2000,
-        filetypes_denylist = { "NvimTree" },
-      })
-
-      vim.keymap.set("n", "<leader>n", function()
-        illuminate.goto_next_reference()
-      end)
-      vim.keymap.set("n", "<leader>p", function()
-        illuminate.goto_prev_reference()
-      end)
-    end,
-  },
-
-  -- which-key
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    init = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-    end,
-    opts = {},
-  },
-
-  -- todo-comments
-  {
-    "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {
-      signs = false,
-    },
   },
 }

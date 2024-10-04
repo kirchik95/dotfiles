@@ -10,11 +10,26 @@ return {
     "hrsh7th/vim-vsnip",
 
     "rafamadriz/friendly-snippets",
+    "roginfarrer/cmp-css-variables",
   },
   config = function()
     local cmp = require("cmp")
     local lspkind = require("lspkind")
-    local css_variables_source = require("sources.css_sources")
+
+    local function find_css_variable_files()
+      local search_dir = "src"
+      local variable_files = {}
+      local file_pattern = "variables%.css$"
+      local files = vim.fn.globpath(search_dir, "**/" .. file_pattern, false, true)
+      for _, file in ipairs(files) do
+        table.insert(variable_files, file)
+      end
+      if #variable_files > 0 then
+        vim.g.css_variables_files = variable_files
+      else
+        vim.g.css_variables_files = {}
+      end
+    end
 
     cmp.setup({
       formatting = {
@@ -48,13 +63,11 @@ return {
         { name = "copilot", group_index = 2 },
         { name = "nvim_lsp" },
         { name = "vsnip" },
+        -- { name = "css-variables" },
       }, {
         { name = "buffer" },
-        { name = "css_variables_source" },
       }),
     })
-
-    cmp.register_source("custom_css_variables", css_variables_source.new())
 
     -- Set configuration for specific filetype.
     cmp.setup.filetype("gitcommit", {
@@ -83,6 +96,7 @@ return {
       }),
     })
 
+    -- find_css_variable_files()
     vim.g.vsnip_snippet_dir = "~/.config/nvim/snippets"
   end,
 }
