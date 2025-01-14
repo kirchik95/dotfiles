@@ -1,4 +1,15 @@
-local servers = { "vimls", "lua_ls", "vtsls", "eslint", "stylelint_lsp", "cssls", "css_variables", "cssmodules_ls" }
+local servers = {
+  "vimls",
+  "lua_ls",
+  -- "vtsls",
+  "ts_ls",
+  "eslint",
+  "stylelint_lsp",
+  "cssls",
+  "css_variables",
+  "cssmodules_ls",
+  "tailwindcss",
+}
 
 require("mason").setup()
 require("mason-lspconfig").setup({
@@ -85,6 +96,19 @@ for _, server in ipairs(servers) do
     config.init_options = { provideFormatter = false }
   elseif server == "cssmodules_ls" then
     config.capabilities = { definitionProvider = false }
+  elseif server == "vtsls" then
+    config.settings = {
+      complete_function_calls = true,
+      vtsls = {
+        enableMoveToFileCodeAction = true,
+        autoUseWorkspaceTsdk = true,
+        experimental = {
+          completion = {
+            enableServerSideFuzzyMatch = true,
+          },
+        },
+      },
+    }
   end
 
   lspconfig[server].setup(config)

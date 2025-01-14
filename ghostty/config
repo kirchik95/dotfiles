@@ -1,0 +1,6 @@
+theme = catppuccin-frappe
+font-family = JetBrains Mono
+font-size = 16
+
+cursor-style = block
+cursor-style-blink = false

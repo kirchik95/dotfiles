@@ -14,6 +14,9 @@ map("n", "<C-w>>", ":vertical resize +30<CR>", opts)
 map("n", "<C-w><up>", "10<C-w>+", opts)
 map("n", "<C-w><down>", "10<C-w>-", opts)
 
+-- map("n", "q", "<Nop>", opts)
+-- map("n", "<Leader>Q", "q", opts)
+
 -- nvim-tree
 -- map("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 -- map("n", "<leader>fe", ":NvimTreeFocus<CR>", { noremap = true, silent = true })

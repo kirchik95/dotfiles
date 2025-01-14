@@ -6,7 +6,7 @@ return {
     version = false,
     opts = {
       provider = "claude",
-      windows = { width = 50 },
+      windows = { width = 30 },
     },
     build = "make",
     keys = {
